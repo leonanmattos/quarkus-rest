@@ -5,6 +5,12 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 public class CreateUserRequest {
+
+	/**
+	 * Cria um novo usuário com validação de campos obrigatórios.
+	 * TODO: Verificar sobre o perfil na criação de usuário.
+	 * @return Usuario
+	 */
 	
 	@NotBlank(message = "{usuario.nome.obrigatorio}")
 	private String nome;
