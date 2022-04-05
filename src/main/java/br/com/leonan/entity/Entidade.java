@@ -10,14 +10,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.CreationTimestamp;
 
 
 @Entity
@@ -33,7 +33,7 @@ public class Entidade {
     @Column(name = "nome_entidade", length = 150, nullable = false)
     private String nome;
     
-    @Column(name = "cnpj", length = 14, nullable = false)
+    @Column(name = "cnpj", length = 15, nullable = false)
     private String cnpj;
 
     @Column(name = "email", length = 100)
@@ -42,16 +42,16 @@ public class Entidade {
     @Column(name = "cep", length = 8)
     private String cep;
 
-    @Column(name = "logradouro", length = 150)
+    @Column(name = "logradouro", length = 100)
     private String logradouro;
 
-    @Column(name = "num_logradouro", length = 10)
+    @Column(name = "num_logradouro", length = 20)
     private String numLogradouro;
 
-    @Column(name = "complemento", length = 150)
+    @Column(name = "complemento", length = 50)
     private String complemento;
 
-    @Column(name = "bairro", length = 100)
+    @Column(name = "bairro", length = 50)
     private String bairro;
 
     @Column(name = "municipio", length = 100)
@@ -84,6 +84,10 @@ public class Entidade {
     @Column(name = "cpf_usuario_alteracao", length = 11)
     private String cpfUsuarioAlteracao;
 
+    @OrderBy("dt_solicitacao DESC")
+
+
+    @CreationTimestamp
     @Column(name = "dt_criacao", nullable = false)
     private LocalDateTime dtCriacao;
 
@@ -109,13 +113,13 @@ public class Entidade {
         this.cnpj = cnpj;
         this.email = email;
         this.numTelefonePrincipal = numTelefonePrincipal;
-    }
+    }    
 
     public Entidade(long id, String nome, String cnpj, String email, String cep, String logradouro,
             String numLogradouro, String complemento, String bairro, String municipio, String siglaUf,
             String numTelefonePrincipal, String numTelefoneSecundario, Boolean situacao, String observacao,
             boolean situacaoEntidade, LocalDateTime dtSolicitacao, String cpfUsuarioCriacao, String cpfUsuarioAlteracao,
-            LocalDateTime dtCriacao, LocalDateTime dtAlteracao) {
+            LocalDateTime dtCriacao, LocalDateTime dtAlteracao, Set<Taxa> taxas, Set<UsuarioEntidade> usuarios) {
         this.id = id;
         this.nome = nome;
         this.cnpj = cnpj;
@@ -137,6 +141,24 @@ public class Entidade {
         this.cpfUsuarioAlteracao = cpfUsuarioAlteracao;
         this.dtCriacao = dtCriacao;
         this.dtAlteracao = dtAlteracao;
+        this.taxas = taxas;
+        this.usuarios = usuarios;
+    }
+
+    public Set<Taxa> getTaxas() {
+        return taxas;
+    }
+
+    public void setTaxas(Set<Taxa> taxas) {
+        this.taxas = taxas;
+    }
+
+    public Set<UsuarioEntidade> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(Set<UsuarioEntidade> usuarios) {
+        this.usuarios = usuarios;
     }
 
     public long getId() {
