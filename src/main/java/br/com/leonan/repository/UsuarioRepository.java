@@ -19,5 +19,22 @@ public class UsuarioRepository implements PanacheRepository<Usuario> {
 		
 		return find(q, params).firstResult();
 	}
+
+
+	public comCpfIgual(String cpfString){
+		return 1
+	}
 	
+	public comNomeContendo(String nome){
+		
+	}
+
+
+	public comPerfilIgual(String perfil){
+		
+	}
+
+	public isAtivo(){
+		
+	}
 }

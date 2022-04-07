@@ -32,9 +32,9 @@ CREATE TABLE sa_rest.tb_entidade (
     observacao VARCHAR(150) NULL,
     situacao BOOL NOT NULL,
     dt_solicitacao DATETIME NOT NULL,
-    --cpf_usuario_criacao VARCHAR(11) NOT NULL,
-    --cpf_usuario_alteracao VARCHAR(11) NULL,
-    --dt_criacao DATETIME NOT NULL,
-    --dt_alteracao DATETIME NULL,
+    cpf_usuario_criacao VARCHAR(11) NOT NULL,
+    cpf_usuario_alteracao VARCHAR(11) NULL,
+    dt_criacao DATETIME NOT NULL,
+    dt_alteracao DATETIME NULL,
 	CONSTRAINT tb_entidade_pkey PRIMARY KEY (id_entidade)
 );

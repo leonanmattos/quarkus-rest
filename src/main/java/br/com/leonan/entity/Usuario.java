@@ -1,10 +1,14 @@
 package br.com.leonan.entity;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -32,6 +36,10 @@ public class Usuario {
 	
 	@Column(name = "situacao", nullable = false)
 	private Boolean situacao;
+
+	@OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
+    private Set<UsuarioEntidade> usuarioEntidade;
+
 	
 	public Usuario() { }
 	
@@ -90,5 +98,15 @@ public class Usuario {
 	public void setSituacao(Boolean situacao) {
 		this.situacao = situacao;
 	}
+
+	public Set<UsuarioEntidade> getUsuarioEntidade() {
+		return usuarioEntidade;
+	}
+
+	public void setUsuarioEntidade(Set<UsuarioEntidade> usuarioEntidade) {
+		this.usuarioEntidade = usuarioEntidade;
+	}
+
+	
 
 }

@@ -4,9 +4,14 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -52,6 +57,18 @@ public class UsuarioEntidade {
 
     @Column(name = "dt_ultima_alteracao")
     private LocalDateTime dtUltimaAlteracao;
+
+    @ManyToOne
+    @JoinColumn(name = "id_entidade")
+    private Entidade entidade;
+
+    @ManyToOne
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "id_perfil")
+    private Perfil perfil;
 
     
     public UsuarioEntidade() {
@@ -168,6 +185,30 @@ public class UsuarioEntidade {
 
     public void setDtUltimaAlteracao(LocalDateTime dtUltimaAlteracao) {
         this.dtUltimaAlteracao = dtUltimaAlteracao;
+    }
+
+    public Entidade getEntidade() {
+        return entidade;
+    }
+
+    public void setEntidade(Entidade entidade) {
+        this.entidade = entidade;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Perfil getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
     }
 
     

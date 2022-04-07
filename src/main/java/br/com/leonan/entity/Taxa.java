@@ -51,6 +51,72 @@ public class Taxa {
     public Taxa() {
     }
 
-    
+    public Taxa(Long id, String nome, LocalDateTime dtInicioVigencia, LocalDateTime dtFimVigencia,
+            Double percentualTaxa, Boolean situacao, Set<Entidade> entidades) {
+        this.id = id;
+        this.nome = nome;
+        this.dtInicioVigencia = dtInicioVigencia;
+        this.dtFimVigencia = dtFimVigencia;
+        this.percentualTaxa = percentualTaxa;
+        this.situacao = situacao;
+        this.entidades = entidades;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public LocalDateTime getDtInicioVigencia() {
+        return dtInicioVigencia;
+    }
+
+    public void setDtInicioVigencia(LocalDateTime dtInicioVigencia) {
+        this.dtInicioVigencia = dtInicioVigencia;
+    }
+
+    public LocalDateTime getDtFimVigencia() {
+        return dtFimVigencia;
+    }
+
+    public void setDtFimVigencia(LocalDateTime dtFimVigencia) {
+        this.dtFimVigencia = dtFimVigencia;
+    }
+
+    public Double getPercentualTaxa() {
+        return percentualTaxa;
+    }
+
+    public void setPercentualTaxa(Double percentualTaxa) {
+        this.percentualTaxa = percentualTaxa;
+    }
+
+    public Boolean getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(Boolean situacao) {
+        this.situacao = situacao;
+    }
+
+    public Set<Entidade> getEntidades() {
+        return entidades;
+    }
+
+    public void setEntidades(Set<Entidade> entidades) {
+        this.entidades = entidades;
+    }    
+
 
 }

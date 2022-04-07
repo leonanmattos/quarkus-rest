@@ -13,7 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -84,9 +83,6 @@ public class Entidade {
     @Column(name = "cpf_usuario_alteracao", length = 11)
     private String cpfUsuarioAlteracao;
 
-    @OrderBy("dt_solicitacao DESC")
-
-
     @CreationTimestamp
     @Column(name = "dt_criacao", nullable = false)
     private LocalDateTime dtCriacao;
@@ -102,8 +98,11 @@ public class Entidade {
     )
     private Set<Taxa> taxas;
 
-    @OneToMany(mappedBy = "id_entidade", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idEntidade", fetch = FetchType.LAZY)
     private Set<UsuarioEntidade> usuarios;
+
+    @OneToMany(mappedBy = "id", fetch = FetchType.EAGER)
+    private Set<Contrato> contratos;
     
 
     public Entidade() { }
