@@ -1,22 +1,16 @@
 package br.com.leonan.resource;
 
 
-import java.net.URI;
-
-import javax.transaction.Transactional;
-import javax.validation.Valid;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
 import br.com.leonan.entity.Usuario;
 import br.com.leonan.resource.request.CreateUserRequest;
 import br.com.leonan.service.UsuarioService;
+
+import javax.transaction.Transactional;
+import javax.validation.Valid;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.net.URI;
 
 @Path("/usuario")
 public class UsuarioResource {
@@ -39,7 +33,7 @@ public class UsuarioResource {
     @Consumes({ MediaType.APPLICATION_JSON })
     @Transactional
     public Response create(@Valid CreateUserRequest createUserRequest) {
-    	Usuario usuario = usuarioService.create(createUserRequest);
+    	Usuario usuario = usuarioService.create(createUserRequest.getCpf(), createUserRequest.getNome(), createUserRequest.getEmail(), createUserRequest.getNumTelefone());
         return Response.created(URI.create(String.valueOf(usuario.getId()))).entity(usuario).build();
     }
 }

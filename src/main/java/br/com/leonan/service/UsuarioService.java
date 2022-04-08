@@ -24,14 +24,22 @@ public class UsuarioService {
 	public Usuario findById(Long id) {
 		return usuarioRepository.findByIdOptional(id).orElseThrow(() -> new NotFoundException());
 	}
-	
+
 	/**
-	 * Método responsável por salvar o usuário
-	 * @param createUserRequest
+	 * Método responsável por criar usuario
+	 * @param cpf
+	 * @param nome
+	 * @param email
+	 * @param numTelefone
 	 * @return Usuario
 	 */
-	public Usuario create(CreateUserRequest createUserRequest) {
-		Usuario usuario = new Usuario(createUserRequest.getCpf(), createUserRequest.getNome(), createUserRequest.getEmail(), createUserRequest.getNumTelefone());
+	public Usuario create(String cpf, String nome, String email, String numTelefone) {
+		Usuario usuario = Usuario.builder().cpf(cpf)
+				.nome(nome)
+				.email(email)
+				.numTelefone(numTelefone)
+				.situacao(Boolean.TRUE)
+				.build();
 		usuarioRepository.persist(usuario);
 		return usuario;
 	}
